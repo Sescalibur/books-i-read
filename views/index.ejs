@@ -1,0 +1,60 @@
+<%- include("partials/header.ejs") %>
+
+<div class="begining">
+    <div><h1>SAMET EMIN SEVIL</h1></div>
+    <div><p style="font-size: 20px;">This website is a list of books I have read.</p></div>
+    <form action="/sort" method="post">
+      <select name="drop" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
+        <option value="id" selected>Order By : </option>
+        <option value="rate">Order By : Rate</option>
+        <option value="date">Order By : Date</option>
+        <option value="title">Order By : Title</option>
+      </select>
+      
+    </form>
+    
+</div>
+
+
+<div class="booksdiv">
+<% for(let item of items){%>
+    <div class="card" style="width: 18rem;">
+        <img src= "https://covers.openlibrary.org/b/isbn/<%= item.isbn %>-M.jpg" class="card-img-top" alt="book image">
+        <div class="card-body">
+          <h5 class="card-title"><%= item.title %></h5>
+          <p class="card-text"><%= item.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Rating : <%= item.rate %>/10</li>
+          <li class="list-group-item">Date : <%= item.date.toLocaleDateString() %></li>
+        </ul>
+        <div class="card-body delete-edit-div">
+            <form action="/delete" method="post">
+                <button class="delete-edit" type="submit" name="deleted" value=<%= item.id  %>><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                  </svg></button>
+            </form>
+            <form action="/edit" method="post">
+                <button class="delete-edit" type="submit" name= "edited" value= <%= item.id %>><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                  </svg></button>
+            </form>
+        </div>
+      </div>
+<% } %>
+    <div class="card" style="width: 18rem;">
+        <div class="add-div">
+            <form action="/create" method="get">
+                <button class="w3-button w3-circle w3-teal" type="submit">+</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,96 @@
+.begining{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+body{
+    background-color: #F3EEEA;
+    color: #776B5D;
+}
+.booksdiv{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card{
+    margin: 5vh 5vh 5vh 0;
+    background-color: #EBE3D5;
+}
+button{
+    background-color: #776B5D;
+    padding: 5px;
+    font-size: 31px;
+    height: 130px;
+    width: 130px;
+    box-shadow: 0 2px 4px darkslategray;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+}
+
+button:hover {
+    background-color: #65b9e6;
+}
+   
+button:active {
+    box-shadow: 0 0 2px darkslategray;
+    transform: translateY(2px);
+}
+.add-div{
+    margin: auto;
+}
+.list-group-item{
+    background-color: #EBE3D5;
+}
+.delete-edit{
+    height: 65px;
+    width: 65px;
+    margin: 0 20px;
+}
+.delete-edit-div{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 480px) {
+    .booksdiv{
+        flex-direction: column;
+    }
+}
+.container-create {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #776B5D;
+}
+p,
+input,
+textarea {
+  margin-bottom: 20px;
+}
+.button-div{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
